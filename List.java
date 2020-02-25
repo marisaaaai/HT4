@@ -54,18 +54,6 @@
 	//post: returns the last element
 	public E get();
 	
-	//pre: value logged as paremeter must not be null
-	//pro: returns true if the list contains an element equal to value
-	public boolean contains(E value);
-	
-	//pre: parameter must not be null
-	//post: returns 0-origin index of value or -1 if value not found
-	public int indexOf(E value);
-	
-	//pre: parameter not null
-	//post: returns ondex of value or -1 if value not found
-	public int lastIndexOf(E value);
-	
 	//pre: i must be bigger than 0 but smaller than size
 	//post returns the element on the i position
 	public E get(int i);
@@ -75,14 +63,6 @@
 	public E set(int i, E o);
 	
 	//pre: i must be bigger than 0 but smaller than size
-	//post: it add the i elemnt of the list to o
-	public void add(int i, E o);
-	
-	//pre: i must be bigger than 0 but smaller than size
 	//post: removes and returns object found on the i position
-	public E remove(int i);
-	
-	//post: returns an iterator that allowing ordered traversal of elements in list
-	public Iterator<E> iterator();
-	
+	public E remove(int i);	
  }

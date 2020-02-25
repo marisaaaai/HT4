@@ -11,8 +11,4 @@
 	public boolean isEmpty(){
 		return size()==0;
 	}
-	//pre:
-	//post: returns true if the list contains a value 
-	public boolean contains(E value){
-		return -1 != indexOf(value);
-	}
+ }
