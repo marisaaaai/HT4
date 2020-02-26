@@ -13,56 +13,16 @@
 	//post: returns true if the list is empty
 	public boolean isEmpty();
 	
-	//post: clears the list
-	public void clear();
-	
 	//post: we add on the first position the value that we logged as a parameter
 	public void addFirst(E value);
 	
 	//post: we add on the last position of the list
 	public void addLast(E value);
 	
-	//pre: the list has to not be empty
-	//pro: we return the first element of the list
+	//post:we remove and return the last element of the list
 	public E getFirst();
 	
-	//pre: the list has to not be empty
-	//post: it returns the last element of the list
-	public E getLast();
-	
-	//pre: the list doesnt have to be empty
-	//post: it remove the first element of the list
-	public E removeFirst();
-	
-	//pre: the list isnt empty
-	//post: removes last value of the list
-	public E removeLast();
-	
-	//pre:list isnt empty
-	//post removes the element of the "value" position
-	public E remove(E value);
-	
-	//pre:
-	//post: add element at the last or tail position
-	public void add(E value);
-	
-	//pre: the list must not be empty
-	//post: removes last value
 	public E remove();
 	
-	//pre: list has at least one element
-	//post: returns the last element
-	public E get();
-	
-	//pre: i must be bigger than 0 but smaller than size
-	//post returns the element on the i position
-	public E get(int i);
-	
-	//pre:i must be bigger than 0 but smaller than size
-	//post: sets the value of the list in the i position to o
-	public E set(int i, E o);
-	
-	//pre: i must be bigger than 0 but smaller than size
-	//post: removes and returns object found on the i position
-	public E remove(int i);	
+
  }

@@ -1,18 +1,13 @@
 
-public SinglyLinkedList<E> extends abstractList<E>{
+public class SinglyLinkedList<E> extends abstractList<E>{
 
 	protected int count; // list size
 	protected Node<E> head; // ref. to first element
 
 	public SinglyLinkedList(){
 	// post: generates an empty list
-		head = null;
-		count = 0;
-	}
-   
-	public int size(){
-		// post: returns number of elements in list
-		return count;
+		this.head = null;
+		this.count = 0;
 	}
   
 	public void addFirst(E value){
@@ -20,24 +15,18 @@ public SinglyLinkedList<E> extends abstractList<E>{
 		// note order that things happen:
 		// head is parameter, then assigned
 		head = new Node<E>(value, head);
-		count++;
+		this.count++;
 	}
   
-	public E removeFirst(){
+	public E remove(){
 	// pre: list is not empty
-	// post: removes and returns value from beginning of list
+	// post: removes and returns value 
 		Node<E> temp = head;
 		head = head.next(); // move head down list
-		count--;
+		this.count--;
 		return temp.value();
 	}
-  
-	public E getFirst(){
-	// pre: list is not empty
-	// post: returns first value in list
-		return head.value();
-	}
-  
+	
 	public void addLast(E value){
 	// post: adds value to end of list
     // location for new value
@@ -53,17 +42,19 @@ public SinglyLinkedList<E> extends abstractList<E>{
 		else{
 			head = temp;
 		}
-		count++;
+		this.count++;
 	  
 	}
-
-	public boolean contains(E value){
-	// pre: value is not null
-	// post: returns true iff value is found in list
-		Node<E> finger = head;
-		while (finger != null && !finger.value().equals(value)){
-			finger = finger.next();
-		}
-		return finger != null;
+	
+	public E getFirst()
+	// pre: list is not empty
+	// post: returns first value in list
+	{
+      return head.value();
+	}	
+	public int size(){
+		// post: returns number of elements in list
+		return count;
 	}
+	
 }
