@@ -46,66 +46,54 @@ public class main {
 		System.out.println();
 		//we ask the user if they want to implement a stack or a list
 		System.out.println("Desea usar \n 1.Stacks \n 2. Listas");
-		System.out.println("Ingrese el numero de la opcion que usted desea: ");
+		System.out.print("Ingrese el numero de la opcion que usted desea: ");
 		int opcion1 = scan.nextInt(); //we save on opcion1 the decision that the user makes
+		System.out.println();
 
 		if (opcion1 == 2) {//if the user decided on a list we show him all the posibilities of lists that they can choose from
 			System.out.println("Las listas disponibles son: \n1.Simplemente encadenada \n2.Doblemente encadenadas \n3.Listas Circulares");
-			System.out.println("Ingrese el numero de la opcion que usted desea: ");
+			System.out.print("Ingrese el numero de la opcion que usted desea: ");
 			int opcion2 = scan.nextInt();//we save in opcion2 the decision that they took
 			List<Integer> myList = new listaFactory().getList(opcion2);
-			//List<Integer> myList = new SinglyLinkedList<Integer>();
-			boolean wasNumber = false;
 			boolean error = false;
-			int counter = 0;
-			while (counter < dataArray.length && !error) {
+			int i = 0;
+			while (i < dataArray.length && !error) {
 				try {
-					myList.addFirst(Integer.parseInt(dataArray[counter]));
-					wasNumber = true;
-				} catch (Exception ex) {
-					wasNumber = false;
-				}
-				//If its not a number we evaluete the operation 
-				System.out.println(myList.size());
-				if (!wasNumber) {
-					if (myList.size() != 2) {
-						error = true;
-						System.out.println("There has been an error in the operation, please check how you wrote it");
-					} else {
-						if (dataArray[counter].equals("+")) {
-							myList.addFirst(calc.sum(myList.remove(), myList.remove()));
-						} else {
-							if (dataArray[counter].equals("-")) {
-								myList.addFirst(calc.subs(-1 * myList.remove(), myList.remove()));
-							} else {
-								if (dataArray[counter].equals("*")) {
-									myList.addFirst(calc.multiply(myList.remove(), myList.remove()));
-								} else {
-									if (dataArray[counter].equals("/")) {
-										try {
-											int operand2 = myList.remove();
-											int operand1 = myList.remove();
-											myList.addFirst(calc.divide(operand1, operand2));
-										} catch (Exception e) {
-											error = true;
-											System.out.println("You have tried to divide something into 0");
-										}
-									} else {
-										error = true;
-										System.out.println("You have entered a value that we do not recognize, please revalue the expression. The sign was: " + dataArray[counter]);
-									}
-								}
-							}
+					//If it's a number it's pushed to the end of the list
+					myList.addLast(Integer.parseInt(dataArray[i]));
+				} catch (Exception e) {
+					//If it's an operator we evaluate the expression
+
+					if (myList.size() > 1) {
+						if (dataArray[i].equals("+")) {
+							myList.addLast(calc.sum(myList.remove(), myList.remove()));
+
+						} else if (dataArray[i].equals("*")) {
+							myList.addLast(calc.multiply(myList.remove(), myList.remove()));
+
+						} else if (dataArray[i].equals("-")) {
+							myList.addLast(calc.subs(-1 * myList.remove(), -1 * myList.remove()));
+
+						} else if (dataArray[i].equals("/")) {
+							int temp = myList.remove();
+							myList.addLast(calc.divide(myList.remove(), temp));
+
+						} else if (!dataArray[i].equals("") && !dataArray[i].equals(" ")) {
+							//If it's neither a number nor an expression we say it's an error.
+							System.out.println("La expresion tiene un operando no valido.");
+							error = true;
 						}
+					} else {
+						System.out.println("Ha ocurrido un error en la operacion. Asegurate de haberla escrito bien.");
+						error = true;
 					}
 				}
-				counter++;
+				i++;
 			}
-			if (myList.size() == 1 && !error) {
-				System.out.println("The result is: " + myList.getFirst());
-			} else {
-				System.out.println("Something happened and the operation could not be executed");
-			}
+
+			if(!myList.isEmpty() && !error)
+				System.out.println("El resultado es: " + myList.remove());
+
 		} else if (opcion1 == 1) { //if the user decides on a stack we show a menu with all the posibilities that the user can choose
 			System.out.println("Los Stacks que puede escoger son: \n1.ArrayList \n2.Vector \n3.Array");
 			System.out.print("Ingrese el numero de la opcion que usted desea: ");
@@ -135,7 +123,7 @@ public class main {
 							int temp = myStack.pop();
 							myStack.push(calc.divide(myStack.pop(), temp));
 
-						} else {
+						} else if (!dataArray[i].equals("") && !dataArray[i].equals(" "))  {
 							//If it's neither a number nor an expression we say it's an error.
 							System.out.println("La expresion tiene un operando no valido.");
 							error = true;
@@ -148,7 +136,7 @@ public class main {
 				i++;
 			}
 
-			if(!myStack.empty())
+			if(!myStack.empty() && !error)
 				System.out.println("El resultado es: " + myStack.pop());
 		} else{
 				System.out.println("Se ingreso una opción invalida");
