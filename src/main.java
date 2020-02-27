@@ -53,7 +53,7 @@ public class main{
 			System.out.println("Las listas disponibles son: \n1.Simplemente encadenada \n2.Doblemente encadenadas \n3.Listas Circulares");
 			System.out.println("Ingrese el numero de la opcion que usted desea: ");
 			int opcion2 = scan.nextInt();//we save in opcion2 the decision that they took
-			List<Integer> myList = listaFactory.getList(opcion2);
+			List<Integer> myList = new listaFactory().getList(opcion2);
 			//List<Integer> myList = new SinglyLinkedList<Integer>();
 			boolean wasNumber=false;
 			boolean error=false;
@@ -115,18 +115,17 @@ public class main{
 				System.out.println("Something happened and the operation could not be executed");
 			}
 		}
+		else if(opcion1 == 1){ //if the user decides on a stack we show a menu with all the posibilities that the user can choose
+			System.out.println("Los Stacks que puede escoger son: \n1.ArrayList \n2.Vector \n3.Array");
+			System.out.println("Ingrese el numero de la opcion que usted desea: ");
+			int opcion2 = scan.nextInt();//we save in opcion2 the decision that the user took
+			Stack<Integer> myStack = new stackFactory().getStack(opcion2);
+
+			System.out.println("As");
+
+		}
 		else{
-			/*
-			if (opcion1==1){ //if the user decides on a stack we show a menu with all the posibilities that the user can choose
-				System.out.println("Los Stacks que puede escoger son: \n1.ArrayList \n2.Vector \n3.Array");
-				System.out.println("Ingrese el numero de la opcion que usted desea: ");
-				int opcion2 = scan.nextInt();//we save in opcion2 the decision that the user took
-				stackFactory<Integer> sFactory = new stackFactory(); //we intance the stack factory with the parameter of the stack that the user took
-				Stack<E> myStack = sFactory.getStack(opcion2);
-			}			
-			else{*/
-				System.out.println("Se ingreso una opción invalida");
-			//}
+			System.out.println("Se ingreso una opción invalida");
 		}
 	}
 }
