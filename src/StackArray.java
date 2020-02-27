@@ -4,12 +4,12 @@
  * @date 23/02/2020
  */
 
-public class StackArray<E> extends abstractStack {
+public class StackArray<E> extends abstractStack<E> {
     private Object[] stack;
     private int size;
 
     public StackArray() {
-        stack = new Object[10];
+        stack = new Object[50];
         size = 0;
     }
 
