@@ -17,12 +17,14 @@ public class StackArray<E> extends abstractStack<E> {
         stack[size++] = item;
     }
 
+    @SuppressWarnings("unchecked")
     public E pop() {
         E temp = (E) stack[--size];
         stack[size] = null;
         return temp;
     }
 
+    @SuppressWarnings("unchecked")
     public E peek() {
         return (E) stack[size - 1];
     }

@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList; 
 public class main {
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		Calculadora calc = SingletonCalculadora.getInstance();
 		Scanner scan = new Scanner(System.in);//instance a scanner that reads what the user writes when we ask them to
