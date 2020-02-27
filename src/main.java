@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.ArrayList; 
 public class main {
 	public static void main(String[] args) {
-		Calculadora calc = new Calculadora();
+		Calculadora calc = SingletonCalculadora.getInstance();
 		Scanner scan = new Scanner(System.in);//instance a scanner that reads what the user writes when we ask them to
 		String archive = "datos.txt";
 		File fichero = new File(archive);
