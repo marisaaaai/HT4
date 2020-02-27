@@ -7,7 +7,7 @@
  class stackFactory<E>{
 	//This class decides which stack to implement
 	//the decision is based on a option that the user decided in the main class
-	public Stack<E> getStack(int d){
+	public static Stack<E> getStack(int d){
 		if(d==1){
 			return new StackArrayList<E>();//it returns an arraylist
 		}

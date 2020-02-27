@@ -52,9 +52,8 @@ public class main{
 		if(opcion1==2){//if the user decided on a list we show him all the posibilities of lists that they can choose from
 			System.out.println("Las listas disponibles son: \n1.Simplemente encadenada \n2.Doblemente encadenadas \n3.Listas Circulares");
 			System.out.println("Ingrese el numero de la opcion que usted desea: ");
-			int opcion2 = scan.nextInt();//we save in opcion2 the decision that they took 
-			listaFactory<Integer> lFactory = new listaFactory<Integer>();//we instance the listFactory with the parameter that the user took
-			List<Integer> myList = lFactory.getList(opcion2);
+			int opcion2 = scan.nextInt();//we save in opcion2 the decision that they took
+			List<Integer> myList = listaFactory.getList(opcion2);
 			//List<Integer> myList = new SinglyLinkedList<Integer>();
 			boolean wasNumber=false;
 			boolean error=false;
